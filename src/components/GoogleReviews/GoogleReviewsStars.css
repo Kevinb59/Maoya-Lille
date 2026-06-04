@@ -1,0 +1,42 @@
+.google-reviews-stars {
+  display: inline-flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.google-reviews-stars__star {
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+  background-color: #e8e2e5;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.google-reviews-stars--sm .google-reviews-stars__star {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.google-reviews-stars--lg .google-reviews-stars__star {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.google-reviews-stars__star--full {
+  background-color: #f5b400;
+}
+
+.google-reviews-stars__star--half {
+  background: linear-gradient(90deg, #f5b400 50%, #e8e2e5 50%);
+}

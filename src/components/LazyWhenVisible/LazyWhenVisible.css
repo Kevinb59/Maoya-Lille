@@ -1,0 +1,5 @@
+/* Placeholder discret pendant l’approche du viewport */
+.lazy-when-visible__placeholder {
+  width: 100%;
+  pointer-events: none;
+}

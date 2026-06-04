@@ -1,0 +1,41 @@
+/* Section effet particules — pleine largeur, fond noir */
+.particle-logo-effect {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: clamp(420px, 52vh, 650px);
+  overflow: hidden;
+  background-color: #000;
+  touch-action: none;
+}
+
+.particle-logo-effect__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.particle-logo-effect--loading .particle-logo-effect__canvas {
+  opacity: 0;
+}
+
+.particle-logo-effect__loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle-logo-effect__canvas {
+    cursor: default;
+  }
+}

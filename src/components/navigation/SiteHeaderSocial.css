@@ -1,0 +1,49 @@
+/* Réseaux sociaux — à droite du téléphone dans le header */
+.site-header-social {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header-social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.625rem;
+  height: 2.625rem;
+  border-radius: 50%;
+  opacity: 0.92;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.site-header-social__link:hover {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.site-header-social__link[aria-disabled='true'] {
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* Icône via masque SVG — même dégradé de couleur que le téléphone */
+.site-header-social__icon {
+  display: block;
+  width: 1.875rem;
+  height: 1.875rem;
+  background-color: color-mix(
+    in srgb,
+    #ffffff calc((1 - var(--header-scroll-progress)) * 100%),
+    var(--color-text) calc(var(--header-scroll-progress) * 100%)
+  );
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  transition: background-color 0.15s ease;
+}

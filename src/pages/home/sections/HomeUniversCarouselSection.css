@@ -1,0 +1,373 @@
+/* Carrousel en arc — 4 cartes, transition fluide entre les positions */
+.home-carousel {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--space-xl);
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.home-carousel__header {
+  max-width: var(--container-max);
+  margin: 0 auto var(--space-xs);
+  padding-inline: var(--space-md);
+  text-align: center;
+}
+
+.home-carousel__title {
+  margin: 0 0 var(--space-sm);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--color-accent);
+  transition: color 0.5s ease;
+}
+
+.home-carousel__lead {
+  margin: 0;
+  max-width: 32rem;
+  margin-inline: auto;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  animation: home-carousel-lead-in 0.45s ease;
+}
+
+@keyframes home-carousel-lead-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-carousel__wrap {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.home-carousel__stage {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  min-height: 400px;
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+  overflow: hidden;
+  transition: height 0.45s ease;
+  /* Swipe horizontal géré en JS ; le scroll vertical de la page reste possible */
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Base commune — ancrage au centre du stage, animation via transform */
+.home-carousel__item {
+  --carousel-card-width: min(300px, 72vw);
+  --carousel-spread: 272px;
+
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--carousel-card-width);
+  transform-origin: center top;
+  transition:
+    transform 0.9s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.65s ease,
+    filter 0.65s ease;
+  will-change: transform, opacity;
+}
+
+/* 0 — Active : centre, droite */
+.home-carousel__item--offset-0 {
+  z-index: 4;
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(-50%, 0) rotate(0deg) scale(1.08);
+}
+
+/* 1 — Suivante : droite */
+.home-carousel__item--offset-1 {
+  z-index: 3;
+  opacity: 0.92;
+  filter: blur(0);
+  transform: translate(calc(-50% + var(--carousel-spread)), 52px) rotate(13deg)
+    scale(0.9);
+}
+
+/* 3 — Précédente : gauche */
+.home-carousel__item--offset-3 {
+  z-index: 3;
+  opacity: 0.92;
+  filter: blur(0);
+  transform: translate(calc(-50% - var(--carousel-spread)), 52px) rotate(-13deg)
+    scale(0.9);
+}
+
+/* 2 — Masquée : derrière, en retrait */
+.home-carousel__item--offset-2 {
+  z-index: 1;
+  opacity: 0;
+  filter: blur(4px);
+  pointer-events: none;
+  transform: translate(-50%, 88px) rotate(0deg) scale(0.78);
+}
+
+.home-carousel__card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-radius: 1.35rem;
+  background: #ffffff;
+  border: 1px solid rgba(139, 74, 107, 0.14);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  color: var(--color-text);
+  text-decoration: none;
+  overflow: hidden;
+  transition: box-shadow 0.35s ease;
+}
+
+.home-carousel__item--offset-0 .home-carousel__card {
+  box-shadow: 0 24px 52px rgba(80, 40, 60, 0.18);
+}
+
+.home-carousel__card:hover {
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.14);
+}
+
+/* Carte #1 — site actuel (Maoya Lille / MakeUp), sans lien externe */
+.home-carousel__card--current-site {
+  cursor: default;
+}
+
+.home-carousel__card--current-site:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.home-carousel__card-media {
+  flex-shrink: 0;
+  background: linear-gradient(145deg, #f0e8ec 0%, #e2d4da 100%);
+}
+
+.home-carousel__card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: aspect-ratio 0.9s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.home-carousel__item--offset-0 .home-carousel__card-image {
+  aspect-ratio: 5 / 4;
+}
+
+.home-carousel__card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--space-md);
+}
+
+.home-carousel__card-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.home-carousel__card-title {
+  margin: var(--space-xs) 0 var(--space-sm);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  transition: font-size 0.5s ease;
+}
+
+.home-carousel__item--offset-0 .home-carousel__card-title {
+  font-size: 1.5rem;
+}
+
+.home-carousel__card-host {
+  margin: 0 0 var(--space-sm);
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.home-carousel__card-desc {
+  flex: 1;
+  margin: 0 0 var(--space-md);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.home-carousel__card-cta {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.home-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.home-carousel__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(139, 74, 107, 0.25);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-accent);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.home-carousel__btn:hover {
+  background-color: #faf7f8;
+  transform: scale(1.05);
+}
+
+.home-carousel__dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.home-carousel__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(139, 74, 107, 0.25);
+  cursor: pointer;
+  transition:
+    transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+    background-color 0.35s ease;
+}
+
+.home-carousel__dot--active {
+  background-color: var(--color-accent);
+  transform: scale(1.35);
+}
+
+@media (max-width: 900px) {
+  .home-carousel__item {
+    --carousel-spread: 210px;
+  }
+
+  .home-carousel__item--offset-1 {
+    transform: translate(calc(-50% + var(--carousel-spread)), 48px) rotate(11deg)
+      scale(0.88);
+  }
+
+  .home-carousel__item--offset-3 {
+    transform: translate(calc(-50% - var(--carousel-spread)), 48px)
+      rotate(-11deg) scale(0.88);
+  }
+
+}
+
+/* Mobile — pleine largeur comme les carrousels prestations (≤640px) */
+@media (max-width: 640px) {
+  .home-carousel__wrap {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow-x: clip;
+  }
+
+  .home-carousel__stage {
+    max-width: 100%;
+    margin-inline: 0;
+    cursor: grab;
+  }
+
+  .home-carousel__stage:active {
+    cursor: grabbing;
+  }
+
+  .home-carousel__item {
+    --carousel-card-width: min(300px, 92vw);
+    --carousel-spread: min(178px, 44vw);
+  }
+
+  .home-carousel__item--offset-1 {
+    transform: translate(calc(-50% + var(--carousel-spread)), 50px) rotate(9deg)
+      scale(0.84);
+    opacity: 0.82;
+  }
+
+  .home-carousel__item--offset-3 {
+    transform: translate(calc(-50% - var(--carousel-spread)), 50px) rotate(-9deg)
+      scale(0.84);
+    opacity: 0.82;
+  }
+
+  .home-carousel__item--offset-0 {
+    transform: translate(-50%, 0) rotate(0deg) scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-carousel__lead {
+    animation: none;
+  }
+
+  .home-carousel__title {
+    transition: none;
+  }
+
+  .home-carousel__item {
+    transition: none;
+  }
+
+  .home-carousel__card-image,
+  .home-carousel__card-title {
+    transition: none;
+  }
+
+  .home-carousel__stage {
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .home-carousel__item,
+  .home-carousel__item--offset-0,
+  .home-carousel__item--offset-1,
+  .home-carousel__item--offset-2,
+  .home-carousel__item--offset-3 {
+    position: relative;
+    left: auto;
+    width: 100%;
+    max-width: 320px;
+    opacity: 1;
+    filter: none;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .home-carousel__item--offset-1,
+  .home-carousel__item--offset-2,
+  .home-carousel__item--offset-3 {
+    display: none;
+  }
+
+}

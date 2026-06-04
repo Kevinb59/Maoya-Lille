@@ -1,0 +1,37 @@
+/* Structure de page — le header fixe est géré par SiteHeader */
+.layout {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+}
+
+.layout__container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.layout__main {
+  flex: 1;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+}
+
+.layout__footer {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--space-md);
+  background-color: var(--color-bg);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.layout__footer p {
+  margin: 0;
+}

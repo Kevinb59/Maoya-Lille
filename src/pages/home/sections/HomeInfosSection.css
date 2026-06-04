@@ -1,0 +1,226 @@
+/* Section Infos — pratique salon + newsletter */
+.home-infos {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  background-color: #f8f6f7;
+  padding-block: var(--space-xl);
+}
+
+.home-infos__container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.home-infos__header {
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.home-infos__title {
+  margin: 0;
+  font-family: var(--font-calligraphy);
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-accent);
+}
+
+/* Grille visite (gauche) / newsletter (droite) */
+.home-infos__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(var(--space-md), 4vw, var(--space-xl));
+  align-items: start;
+}
+
+.home-infos__block-title {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-serif-caps);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.home-infos__intro {
+  margin: 0 0 var(--space-md);
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+.home-infos__schedule {
+  margin: 0 0 var(--space-md);
+  padding: 0;
+  list-style: none;
+}
+
+.home-infos__schedule-item {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.home-infos__schedule-item + .home-infos__schedule-item {
+  margin-top: var(--space-xs);
+}
+
+.home-infos__schedule-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}
+
+.home-infos__schedule-label {
+  font-weight: 600;
+}
+
+.home-infos__home-service {
+  margin: 0 0 var(--space-md);
+  font-family: var(--font-serif-caps);
+  font-size: clamp(1rem, 2.4vw, 1.1875rem);
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+
+.home-infos__notice {
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  background-color: rgba(139, 74, 107, 0.08);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 6px 6px 0;
+}
+
+/* Newsletter */
+.home-infos__newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background-color: var(--color-bg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+}
+
+.home-infos__newsletter-lead {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.home-infos__newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.home-infos__newsletter-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.home-infos__newsletter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.home-infos__newsletter-input {
+  flex: 1 1 12rem;
+  min-width: 0;
+  width: auto;
+  height: 2.75rem;
+  min-height: 2.75rem;
+  max-height: 2.75rem;
+  box-sizing: border-box;
+  padding: 0 0.85em;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.home-infos__newsletter-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.home-infos__newsletter-submit {
+  flex-shrink: 0;
+  min-height: 2.75rem;
+  padding: 0.65em 1.5em;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.home-infos__newsletter-submit:hover,
+.home-infos__newsletter-submit:focus-visible {
+  color: var(--color-accent);
+  background-color: transparent;
+  outline: none;
+}
+
+.home-infos__newsletter-feedback {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.home-infos__newsletter-feedback--success {
+  color: #2d6a4f;
+}
+
+.home-infos__newsletter-feedback--error {
+  color: #9b2335;
+}
+
+@media (max-width: 900px) {
+  .home-infos__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-infos__newsletter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* flex-grow: 1 étirait le champ en hauteur en colonne */
+  .home-infos__newsletter-input {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .home-infos__newsletter-submit {
+    width: 100%;
+  }
+}

@@ -1,0 +1,37 @@
+/* Conteneur = hauteur du canvas uniquement (pas de marge verticale en plus) */
+.gift-card-3d {
+  display: block;
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+  touch-action: none;
+  background: transparent;
+}
+
+.gift-card-3d__viewport {
+  width: 100%;
+  height: 450px;
+  line-height: 0;
+  overflow: visible;
+}
+
+.gift-card-3d__viewport canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+  background: transparent !important;
+  vertical-align: top;
+}
+
+.gift-card-3d:active .gift-card-3d__viewport canvas {
+  cursor: grabbing;
+}
+
+@media (max-width: 600px) {
+  .gift-card-3d__viewport {
+    height: 333px;
+  }
+}

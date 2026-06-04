@@ -1,0 +1,21 @@
+/* Variables de design — à affiner lors de la page d'accueil */
+:root {
+  --color-text: #1a1a1a;
+  --color-text-muted: #5c5c5c;
+  --color-bg: #ffffff;
+  --color-accent: #8b4a6b;
+
+  --font-sans: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-calligraphy: 'Rochester', 'Segoe Script', cursive;
+  --font-serif-caps: 'Times New Roman', Times, Georgia, serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  --container-max: 1200px;
+  --header-height: 4rem;
+}
