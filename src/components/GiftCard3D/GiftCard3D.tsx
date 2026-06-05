@@ -289,10 +289,15 @@ export function GiftCard3D({
     : 'gift-card-3d'
 
   return (
-    <div className={rootClass} aria-label="Carte cadeau Maoya — manipulation 3D">
+    <div
+      className={rootClass}
+      aria-label="Carte cadeau Maoya — manipulation 3D au survol (desktop)"
+    >
       {/* Viewport fixe = taille de la carte ; le parent ajoute de la marge anti-rognage */}
       <div className="gift-card-3d__viewport">
-      <Canvas
+        {/* Voile mobile — laisse passer le scroll, bloque le drag sur la carte (≤900px) */}
+        <div className="gift-card-3d__scroll-shield" aria-hidden="true" />
+        <Canvas
         dpr={[1, 2]}
         camera={{
           position: [0, 0.28, 5.6],
